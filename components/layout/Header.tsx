@@ -4,7 +4,7 @@ import ThemeToggle from "../common/ThemeToggle";
 
 export default function Header() {
   return (
-    <header className="border-b">
+    <header className="bg-surface border-b border-border">
       <Container>
         <div className="grid grid-cols-12 items-center gap-4 py-4">
           <div className="col-span-6 md:col-span-2 font-bold text-xl">
@@ -17,7 +17,7 @@ export default function Header() {
 
           <div className="col-span-6 md:col-span-3 flex justify-end items-center gap-4">
             <ThemeToggle />
-            🛒 Cart
+              🛒 Cart
           </div>
         </div>
       </Container>

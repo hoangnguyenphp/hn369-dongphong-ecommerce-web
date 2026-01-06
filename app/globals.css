@@ -4,6 +4,19 @@
 
 @import "../styles/themes.css";
 
-body {
-  min-height: 100vh;
+@layer base {
+  body {
+    @apply min-h-screen transition-colors duration-300;
+    background-color: rgb(var(--color-bg));
+    color: rgb(var(--color-text));
+  }
+  
+  * {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background: rgb(var(--color-accent));
+    color: white;
+  }  
 }

@@ -1,16 +1,29 @@
+/* Default (Light) Theme */
 :root {
-  --bg: #ffffff;
-  --text: #111827;
-  --primary: #4f46e5;
+  --color-bg: 248 250 252;        /* slate-50 */
+  --color-surface: 255 255 255;   /* white */
+  --color-border: 226 232 240;    /* slate-200 */
+
+  --color-text: 15 23 42;         /* slate-900 */
+  --color-muted: 100 116 139;     /* slate-500 */
+
+  --color-primary: 79 70 229;     /* indigo-600 */
+  --color-primary-hover: 67 56 202;
+
+  --color-accent: 236 72 153;     /* pink-500 */
 }
 
+/* Dark Theme */
 [data-theme="dark"] {
-  --bg: #0f172a;
-  --text: #e5e7eb;
-  --primary: #6366f1;
-}
+  --color-bg: 2 6 23;             /* slate-950 */
+  --color-surface: 15 23 42;      /* slate-900 */
+  --color-border: 30 41 59;       /* slate-700 */
 
-body {
-  background-color: var(--bg);
-  color: var(--text);
+  --color-text: 226 232 240;      /* slate-200 */
+  --color-muted: 148 163 184;     /* slate-400 */
+
+  --color-primary: 99 102 241;    /* indigo-500 */
+  --color-primary-hover: 129 140 248;
+
+  --color-accent: 244 114 182;    /* pink-400 */
 }
