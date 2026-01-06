@@ -3,39 +3,53 @@
 import { useCart } from "../../hooks/useCart";
 
 export default function CartSummary() {
-  const { cartItems, clearCart, isOpen, toggleOpen } = useCart();
+  const { items, clearCart, isOpen, toggleOpen } = useCart();
 
-  if (cartItems.length === 0) return null;
+  if (!items || items.length === 0) return null;
 
   if (!isOpen) {
-    // show a small button to re-open
     return (
       <button
         onClick={toggleOpen}
-        className="fixed bottom-4 right-4 bg-indigo-600 text-white px-3 py-1 rounded shadow-md z-50"
+        className="fixed bottom-4 right-4 bg-primary text-white px-3 py-1 rounded-lg shadow-lg z-50"
       >
-        Open Cart ({cartItems.length})
+        Open Cart ({items.length})
       </button>
     );
   }
 
   return (
-    <div className="fixed bottom-4 right-4 bg-white border p-4 rounded shadow-md w-64 z-50">
-      <div className="flex justify-between items-center mb-2">
-        <h4 className="font-semibold">Cart ({cartItems.length})</h4>
-        <button onClick={toggleOpen} className="text-gray-500 hover:text-gray-700 font-bold">✕</button>
+    <div className="fixed bottom-4 right-4 bg-surface border border-border p-4 rounded-xl shadow-xl w-72 z-50">
+      <div className="flex justify-between items-center mb-3">
+        <h4 className="font-semibold">Cart ({items.length})</h4>
+        <button
+          onClick={toggleOpen}
+          className="text-muted hover:text-text font-bold"
+        >
+          ✕
+        </button>
       </div>
-      <ul className="mb-2 max-h-40 overflow-auto">
-        {cartItems.map((p) => (
-          <li key={p.id} className="flex justify-between mb-1">
-            <span>{p.name}</span>
-            <span>${p.price}</span>
+
+      <ul className="mb-3 max-h-40 overflow-auto space-y-2">
+        {items.map((item) => (
+          <li key={item.skuId} className="flex justify-between text-sm">
+            <div>
+              <p className="font-medium">{item.name}</p>
+              <p className="text-muted text-xs">
+                {Object.values(item.attributes)
+                  .filter(Boolean)
+                  .join(" · ")}
+              </p>
+              <p className="text-xs">Qty: {item.quantity}</p>
+            </div>
+            <span>${item.price}</span>
           </li>
         ))}
       </ul>
+
       <button
         onClick={clearCart}
-        className="text-sm px-3 py-1 border rounded hover:bg-gray-100 w-full"
+        className="text-sm px-3 py-2 border border-border rounded-lg hover:bg-bg w-full"
       >
         Clear Cart
       </button>

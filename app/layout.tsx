@@ -3,19 +3,17 @@
 import "./globals.css";
 import { CartProvider } from "../hooks/useCart";
 import { WishlistProvider } from "../hooks/useWishlist";
-import CartSummary from "../components/common/CartSummary";
-import WishlistSummary from "../components/common/WishlistSummary";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-bg text-text">
         <CartProvider>
-          <WishlistProvider>
-            {children}
-            <CartSummary />
-            <WishlistSummary />
-          </WishlistProvider>
+          <WishlistProvider>{children}</WishlistProvider>
         </CartProvider>
       </body>
     </html>

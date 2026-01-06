@@ -1,49 +1,130 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-
-export type Product = { id: number; name: string; price: number; image?: string };
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { Product, SKU } from "../lib/models/product";
+import { CartItem } from "../lib/models/cart";
 
 type CartContextType = {
-  cartItems: Product[];
-  addToCart: (product: Product) => void;
-  removeFromCart: (productId: number) => void;
+  items: CartItem[];
+
+  addToCart: (product: Product, sku: SKU) => void;
+  removeFromCart: (skuId: string) => void;
   clearCart: () => void;
+
   isOpen: boolean;
   toggleOpen: () => void;
 };
 
-const CartContext = createContext<CartContextType | undefined>(undefined);
+const CartContext = createContext<CartContextType | null>(null);
 
-export function CartProvider({ children }: { children: ReactNode }) {
-  const [cartItems, setCartItems] = useState<Product[]>([]);
-  const [isOpen, setIsOpen] = useState(false);
+const STORAGE_KEY = "ecommerce_cart";
 
+export function CartProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [items, setItems] = useState<CartItem[]>([]);
+  const [isOpen, setIsOpen] = useState(true);
+
+  /* ----------------------------
+   * Load cart from localStorage
+   * ---------------------------- */
   useEffect(() => {
-    const saved = localStorage.getItem("cart");
-    if (saved) setCartItems(JSON.parse(saved));
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      try {
+        setItems(JSON.parse(stored));
+      } catch {
+        setItems([]);
+      }
+    }
   }, []);
 
+  /* ----------------------------
+   * Persist cart to localStorage
+   * ---------------------------- */
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartItems));
-    if (cartItems.length > 0) setIsOpen(true); // open automatically when items added
-  }, [cartItems]);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+  }, [items]);
 
-  const addToCart = (product: Product) => setCartItems((prev) => [...prev, product]);
-  const removeFromCart = (productId: number) => setCartItems((prev) => prev.filter(p => p.id !== productId));
-  const clearCart = () => setCartItems([]);
+  /* ----------------------------
+   * Cart Actions
+   * ---------------------------- */
+  const addToCart = (product: Product, sku: SKU) => {
+    setItems((prev) => {
+      const existing = prev.find(
+        (i) => i.skuId === sku.skuId
+      );
 
-  const toggleOpen = () => setIsOpen((prev) => !prev);
+      if (existing) {
+        return prev.map((i) =>
+          i.skuId === sku.skuId
+            ? { ...i, quantity: i.quantity + 1 }
+            : i
+        );
+      }
+
+      return [
+        ...prev,
+        {
+          productId: product.id,
+          slug: product.slug,
+          name: product.name,
+
+          skuId: sku.skuId,
+          attributes: sku.attributes,
+          price: sku.price,
+          quantity: 1,
+          image: sku.image ?? product.images[0],
+        },
+      ];
+    });
+
+    setIsOpen(true); // auto-open cart when adding
+  };
+
+  const removeFromCart = (skuId: string) => {
+    setItems((prev) =>
+      prev.filter((i) => i.skuId !== skuId)
+    );
+  };
+
+  const clearCart = () => {
+    setItems([]);
+  };
+
+  const toggleOpen = () => {
+    setIsOpen((v) => !v);
+  };
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart, isOpen, toggleOpen }}>
+    <CartContext.Provider
+      value={{
+        items,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        isOpen,
+        toggleOpen,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
 }
 
 export function useCart() {
-  const context = useContext(CartContext);
-  if (!context) throw new Error("useCart must be used within a CartProvider");
-  return context;
+  const ctx = useContext(CartContext);
+  if (!ctx) {
+    throw new Error(
+      "useCart must be used inside CartProvider"
+    );
+  }
+  return ctx;
 }

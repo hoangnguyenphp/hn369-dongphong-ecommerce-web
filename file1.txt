@@ -1,0 +1,81 @@
+ecommerce-web/
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── globals.css
+│   ├── metadata.ts
+│   │
+│   └── products/
+│       └── [slug]/
+│           ├── page.tsx                  # Server (SEO + data)
+│           ├── loading.tsx
+│           ├── not-found.tsx
+│           └── ProductDetailClient.tsx   # Client (SKU, cart)
+│
+├── components/
+│   ├── layout/
+│   │   ├── Header.tsx
+│   │   ├── Navigation.tsx
+│   │   ├── Footer.tsx
+│   │   └── Container.tsx
+│   │
+│   ├── home/
+│   │   ├── HeroBanner.tsx
+│   │   ├── FeaturedCategories.tsx
+│   │   ├── FeaturedProducts.tsx
+│   │   └── ProductCard.tsx               # Link → product detail
+│   │
+│   ├── product/
+│   │   ├── ProductGallery.tsx            # SKU-based image
+│   │   ├── ProductInfo.tsx               # Name, desc
+│   │   ├── SkuSelector.tsx               # ⭐ CORE
+│   │   ├── PriceDisplay.tsx
+│   │   └── AddToCartSection.tsx
+│   │
+│   ├── cart/
+│   │   ├── CartSummary.tsx
+│   │   └── CartItem.tsx
+│   │
+│   ├── wishlist/
+│   │   ├── WishlistSummary.tsx
+│   │   └── WishlistItem.tsx
+│   │
+│   └── common/
+│       ├── Button.tsx
+│       ├── IconButton.tsx
+│       ├── SearchBar.tsx
+│       ├── ThemeToggle.tsx
+│       └── AdsBanner.tsx
+│
+├── hooks/
+│   ├── useCart.ts                        # SKU-aware
+│   ├── useWishlist.ts                   # SKU-aware
+│   ├── useTheme.ts
+│   └── useLocalStorage.ts
+│
+├── lib/
+│   ├── models/
+│   │   ├── product.ts                   # Product & SKU
+│   │   ├── cart.ts                      # CartItem
+│   │   └── wishlist.ts
+│   │
+│   ├── data/
+│   │   └── products.ts                  # Mock / API
+│   │
+│   ├── seo.ts
+│   ├── ads.ts
+│   └── constants.ts
+│
+├── styles/
+│   └── themes.css
+│
+├── public/
+│   └── images/
+│
+├── Dockerfile
+├── tailwind.config.ts
+├── next.config.js
+├── package.json
+└── .github/
+    └── workflows/
+        └── ci.yml
