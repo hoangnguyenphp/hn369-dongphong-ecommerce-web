@@ -3,41 +3,67 @@
 import { useWishlist } from "../../hooks/useWishlist";
 
 export default function WishlistSummary() {
-  const { wishlistItems, removeFromWishlist, isOpen, toggleOpen } = useWishlist();
+  const {
+    wishlistItems,
+    removeFromWishlist,
+    isOpen,
+    toggleOpen,
+  } = useWishlist();
 
-  // If no items, hide the summary entirely
   if (wishlistItems.length === 0) return null;
 
-  // If closed, show a small button to re-open
   if (!isOpen) {
     return (
       <button
         onClick={toggleOpen}
-        className="fixed bottom-4 left-4 bg-pink-600 text-white px-3 py-1 rounded shadow-md z-50"
+        className="fixed bottom-4 left-4 bg-accent text-white px-4 py-2 rounded-full shadow-lg z-50"
       >
-        Open Wishlist ({wishlistItems.length})
+        ❤️ Wishlist ({wishlistItems.length})
       </button>
     );
   }
 
-  // If open, show the full wishlist box
   return (
-    <div className="fixed bottom-4 left-4 bg-white border p-4 rounded shadow-md w-64 z-50">
-      <div className="flex justify-between items-center mb-2">
-        <h4 className="font-semibold">Wishlist ({wishlistItems.length})</h4>
+    <div className="fixed bottom-4 left-4 bg-surface border border-border rounded-xl shadow-xl w-72 z-50">
+      {/* Header */}
+      <div className="flex justify-between items-center px-4 py-2 border-b border-border">
+        <h4 className="font-semibold">
+          Wishlist ({wishlistItems.length})
+        </h4>
         <button
           onClick={toggleOpen}
-          className="text-gray-500 hover:text-gray-700 font-bold"
+          className="text-muted hover:text-text font-bold"
         >
           ✕
         </button>
       </div>
-      <ul className="mb-2 max-h-40 overflow-auto">
-        {wishlistItems.map((p) => (
-          <li key={p.id} className="flex justify-between mb-1">
-            <span>{p.name}</span>
+
+      {/* Items */}
+      <ul className="max-h-56 overflow-auto p-3 space-y-3">
+        {wishlistItems.map((item) => (
+          <li key={item.skuId} className="flex gap-3 items-start">
+            {item.image && (
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-12 h-12 rounded object-cover border border-border"
+              />
+            )}
+
+            <div className="flex-1">
+              <p className="font-medium text-sm">{item.name}</p>
+              <p className="text-xs text-muted">
+                {Object.values(item.attributes)
+                  .filter(Boolean)
+                  .join(" · ")}
+              </p>
+              <p className="text-sm font-semibold text-primary">
+                ${item.price}
+              </p>
+            </div>
+
             <button
-              onClick={() => removeFromWishlist(p.id)}
+              onClick={() => removeFromWishlist(item.skuId)}
               className="text-red-500 text-xs hover:underline"
             >
               Remove

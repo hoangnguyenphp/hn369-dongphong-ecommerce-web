@@ -5,6 +5,7 @@ import {
   useContext,
   useEffect,
   useState,
+  ReactNode,
 } from "react";
 import { Product, SKU } from "../lib/models/product";
 import { CartItem } from "../lib/models/cart";
@@ -24,16 +25,12 @@ const CartContext = createContext<CartContextType | null>(null);
 
 const STORAGE_KEY = "ecommerce_cart";
 
-export function CartProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   /* ----------------------------
-   * Load cart from localStorage
+   * Load from localStorage
    * ---------------------------- */
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
@@ -47,20 +44,18 @@ export function CartProvider({
   }, []);
 
   /* ----------------------------
-   * Persist cart to localStorage
+   * Persist to localStorage
    * ---------------------------- */
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
   }, [items]);
 
   /* ----------------------------
-   * Cart Actions
+   * Actions
    * ---------------------------- */
   const addToCart = (product: Product, sku: SKU) => {
     setItems((prev) => {
-      const existing = prev.find(
-        (i) => i.skuId === sku.skuId
-      );
+      const existing = prev.find((i) => i.skuId === sku.skuId);
 
       if (existing) {
         return prev.map((i) =>
@@ -86,17 +81,16 @@ export function CartProvider({
       ];
     });
 
-    setIsOpen(true); // auto-open cart when adding
+    setIsOpen(true); // auto-open when adding
   };
 
   const removeFromCart = (skuId: string) => {
-    setItems((prev) =>
-      prev.filter((i) => i.skuId !== skuId)
-    );
+    setItems((prev) => prev.filter((i) => i.skuId !== skuId));
   };
 
   const clearCart = () => {
     setItems([]);
+    setIsOpen(false);
   };
 
   const toggleOpen = () => {
@@ -122,9 +116,7 @@ export function CartProvider({
 export function useCart() {
   const ctx = useContext(CartContext);
   if (!ctx) {
-    throw new Error(
-      "useCart must be used inside CartProvider"
-    );
+    throw new Error("useCart must be used inside CartProvider");
   }
   return ctx;
 }

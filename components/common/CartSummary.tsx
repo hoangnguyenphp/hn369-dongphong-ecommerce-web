@@ -11,15 +11,16 @@ export default function CartSummary() {
     return (
       <button
         onClick={toggleOpen}
-        className="fixed bottom-4 right-4 bg-primary text-white px-3 py-1 rounded-lg shadow-lg z-50"
+        className="fixed bottom-4 right-4 bg-primary text-white px-4 py-2 rounded-full shadow-lg z-50"
       >
-        Open Cart ({items.length})
+        🛒 Cart ({items.length})
       </button>
     );
   }
 
   return (
     <div className="fixed bottom-4 right-4 bg-surface border border-border p-4 rounded-xl shadow-xl w-72 z-50">
+      {/* Header */}
       <div className="flex justify-between items-center mb-3">
         <h4 className="font-semibold">Cart ({items.length})</h4>
         <button
@@ -30,7 +31,8 @@ export default function CartSummary() {
         </button>
       </div>
 
-      <ul className="mb-3 max-h-40 overflow-auto space-y-2">
+      {/* Items */}
+      <ul className="mb-3 max-h-40 overflow-auto space-y-3">
         {items.map((item) => (
           <li key={item.skuId} className="flex justify-between text-sm">
             <div>
@@ -42,7 +44,7 @@ export default function CartSummary() {
               </p>
               <p className="text-xs">Qty: {item.quantity}</p>
             </div>
-            <span>${item.price}</span>
+            <span className="font-semibold">${item.price}</span>
           </li>
         ))}
       </ul>

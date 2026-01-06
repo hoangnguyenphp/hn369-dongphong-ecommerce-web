@@ -7,18 +7,22 @@ export default function FeaturedProducts() {
       <h2 className="text-2xl font-bold mb-6">Featured Products</h2>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={{
-              id: product.id,
-              name: product.name,
-              slug: product.slug,
-              price: product.skus[0].price, // 👈 price hiển thị đại diện
-              image: product.images[0],
-            }}
-          />
-        ))}
+        {products.map((product) => {
+          const defaultSku = product.skus[0];
+
+          return (
+            <ProductCard
+              key={`${product.id}-${defaultSku.skuId}`}
+              product={{
+                id: product.id,
+                name: product.name,
+                slug: product.slug,
+                image: defaultSku.image || product.images[0],
+                sku: defaultSku,
+              }}
+            />
+          );
+        })}
       </div>
     </section>
   );
