@@ -1,0 +1,112 @@
+ecommerce-web/
+├── app/                    # Next.js App Router
+│   ├── layout.tsx
+│   ├── page.tsx            # Homepage
+│   ├── globals.css
+│   └── metadata.ts
+│
+├── components/
+│   ├── layout/
+│   │   ├── Header.tsx
+│   │   ├── Footer.tsx
+│   │   ├── Navigation.tsx
+│   │   └── Container.tsx
+│   │
+│   ├── home/
+│   │   ├── HeroBanner.tsx
+│   │   ├── FeaturedCategories.tsx
+│   │   ├── FeaturedProducts.tsx
+│   │   └── ProductCard.tsx
+│   │
+│   ├── common/
+│   │   ├── Button.tsx
+│   │   ├── SearchBar.tsx
+│   │   ├── ThemeToggle.tsx
+│   │   └── AdsBanner.tsx
+│
+├── hooks/
+│   ├── useCart.ts
+│   └── useTheme.ts
+│
+├── lib/
+│   ├── seo.ts
+│   ├── ads.ts
+│   └── constants.ts
+│
+├── styles/
+│   └── themes.css
+│
+├── public/
+│   └── images/
+│
+├── Dockerfile
+├── tailwind.config.ts
+├── next.config.js
+├── package.json
+└── .github/workflows/ci.yml
+
+
+
+1️⃣ package.json
+
+
+2️⃣ next.config.js
+
+
+3️⃣ tailwind.config.ts
+
+
+4️⃣ postcss.config.js
+
+
+5️⃣ app/globals.css
+
+
+6️⃣ styles/themes.css (Theme-ready)
+
+7️⃣ app/metadata.ts (SEO foundation)
+
+
+8️⃣ app/layout.tsx
+
+
+9️⃣ app/page.tsx (Homepage composition)
+
+
+🔟 components/layout/Container.tsx
+
+
+1️⃣1️⃣ components/layout/Header.tsx
+
+
+1️⃣2️⃣ components/layout/Navigation.tsx
+
+
+1️⃣3️⃣ components/layout/Footer.tsx
+
+
+1️⃣4️⃣ components/home/HeroBanner.tsx
+
+
+1️⃣5️⃣ components/home/FeaturedCategories.tsx
+
+
+1️⃣6️⃣ components/home/ProductCard.tsx
+
+
+1️⃣7️⃣ components/home/FeaturedProducts.tsx
+
+
+1️⃣8️⃣ components/common/SearchBar.tsx
+
+
+1️⃣9️⃣ components/common/ThemeToggle.tsx
+
+
+2️⃣0️⃣ components/common/AdsBanner.tsx (Google Ads ready)
+
+
+2️⃣1️⃣ hooks/useTheme.ts
+
+
+2️⃣2️⃣ .github/workflows/ci.yml

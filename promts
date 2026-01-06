@@ -1,0 +1,124 @@
+Now I want to create a modern commercial website for this ecommerce application.
+
+
+Use a component-based architecture with reusable components
+
+Ensure full mobile responsiveness using CSS Grid and Flexbox (e.g., Tailwind CSS or styled-components).
+
+
+The website can display the google advertisement, good SEO standard.
+
+Make sure the source code is easy to maintain and extend.
+
+Make sure the project will be applicable with CI/CD to be deployed to the cloud.
+
+It would be great If you can make the website easy to change theme
+
+The layout will be something look like this:
+
++-------------------------------+
+|            Header             |
+| +---------------------------+ |
+| | Logo | Search Bar | Cart | |
+| +---------------------------+ |
+|          Navigation Menu      |
+| (Home | Categories | Deals)   |
++-------------------------------+
+|        Hero Banner/Slider      |
+| (Promotional Image + CTA)     |
++-------------------------------+
+|      Featured Categories      |
+| +-------+ +-------+ +-------+ |
+| | Cat1  | | Cat2  | | Cat3  | |
+| | Image | | Image | | Image | |
+| +-------+ +-------+ +-------+ |
++-------------------------------+
+|       Featured Products       |
+| +-------+ +-------+ +-------+ |
+| | Prod1 | | Prod2 | | Prod3 | |
+| | Image | | Image | | Image | |
+| | Price | | Price | | Price | |
+| +-------+ +-------+ +-------+ |
++-------------------------------+
+|            Footer             |
+| (About | Contact | Social)    |
++-------------------------------+ 
+
+
+====
+
+
+Generate full starter repo ensure it is runable and I can download the source code to my local.
+
+
+===
+
+
+seem your zip source code does not work. I think we should change another strategy. Firstly let I remind you the requirement:
+
+"Now I want to create a modern commercial website for this ecommerce application. 
+
+
+Use a component-based architecture with reusable components
+
+Ensure full mobile responsiveness using CSS Grid and Flexbox (e.g., Tailwind CSS or styled-components).
+
+
+The website can display the google advertisement, good SEO standard.
+
+Make sure the source code is easy to maintain and extend.
+
+Make sure the project will be applicable with CI/CD to be deployed to the cloud."
+
+And this is our project structure:
+
+ecommerce-web/
+├── app/                    # Next.js App Router
+│   ├── layout.tsx
+│   ├── page.tsx            # Homepage
+│   ├── globals.css
+│   └── metadata.ts
+│
+├── components/
+│   ├── layout/
+│   │   ├── Header.tsx
+│   │   ├── Footer.tsx
+│   │   ├── Navigation.tsx
+│   │   └── Container.tsx
+│   │
+│   ├── home/
+│   │   ├── HeroBanner.tsx
+│   │   ├── FeaturedCategories.tsx
+│   │   ├── FeaturedProducts.tsx
+│   │   └── ProductCard.tsx
+│   │
+│   ├── common/
+│   │   ├── Button.tsx
+│   │   ├── SearchBar.tsx
+│   │   ├── ThemeToggle.tsx
+│   │   └── AdsBanner.tsx
+│
+├── hooks/
+│   ├── useCart.ts
+│   └── useTheme.ts
+│
+├── lib/
+│   ├── seo.ts
+│   ├── ads.ts
+│   └── constants.ts
+│
+├── styles/
+│   └── themes.css
+│
+├── public/
+│   └── images/
+│
+├── Dockerfile
+├── tailwind.config.ts
+├── next.config.js
+├── package.json
+└── .github/workflows/ci.yml
+
+please help to generate all the files then I will copy each file one by one.
+
+
