@@ -1,47 +1,8 @@
-hn369-dongphong-ecommerce-web/
-├── app/                    # Next.js App Router
-│   ├── layout.tsx
-│   ├── page.tsx            # Homepage
-│   ├── globals.css
-│   └── metadata.ts
-│
-├── components/
-│   ├── layout/
-│   │   ├── Header.tsx
-│   │   ├── Footer.tsx
-│   │   ├── Navigation.tsx
-│   │   └── Container.tsx
-│   │
-│   ├── home/
-│   │   ├── HeroBanner.tsx
-│   │   ├── FeaturedCategories.tsx
-│   │   ├── FeaturedProducts.tsx
-│   │   └── ProductCard.tsx
-│   │
-│   ├── common/
-│   │   ├── SearchBar.tsx
-│   │   ├── ThemeToggle.tsx
-│   │   └── AdsBanner.tsx
-|   |   |__ CartSummary.tsx
-|   |   |__ WishlistSummary.tsx
-│
-├── hooks/
-│   ├── useCart.ts
-│   └── useTheme.ts
-│
-├── lib/
-│   ├── seo.ts
-│   ├── ads.ts
-│   └── constants.ts
-│
-├── styles/
-│   └── themes.css
-│
-├── public/
-│   └── images/
-│
-├── Dockerfile
-├── tailwind.config.ts
-├── next.config.js
-├── package.json
-└── .github/workflows/ci.yml
+Usage
+Open a folder in Visual Studio Code.
+Press Ctrl+Shift+P (or Cmd+Shift+P on macOS) to open the command palette.
+Search for "Tree Exporter: Export" and run the command.
+A new text document containing the directory structure will open.
+Alternatively, you can right-click on a folder in the VS Code explorer and select "Export Tree" from the context menu.
+
+To exclude a directory from the tree export, right-click on the folder and select "Exclude from tree export" from the context menu. To include a previously excluded directory, right-click on the folder and select "Include in tree export" from the context menu.

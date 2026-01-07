@@ -1,11 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./app/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./hooks/**/*.{ts,tsx}",
-  ],
+  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -18,6 +14,7 @@ const config: Config = {
 
         primary: "rgb(var(--color-primary) / <alpha-value>)",
         "primary-hover": "rgb(var(--color-primary-hover) / <alpha-value>)",
+
         accent: "rgb(var(--color-accent) / <alpha-value>)",
       },
     },

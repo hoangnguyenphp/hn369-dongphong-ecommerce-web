@@ -3,6 +3,9 @@ node_modules/
 .pnp/
 .pnp.js
 
+# temp folder
+temp/
+
 # Next.js build output
 .next/
 out/
