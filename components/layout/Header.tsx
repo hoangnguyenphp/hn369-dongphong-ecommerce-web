@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 bg-surface/90 backdrop-blur border-b border-border">
+    <header className="top-0 z-50 bg-surface/90 backdrop-blur border-b border-border">
       <Container>
         <div className="grid grid-cols-12 items-center gap-4 py-4">
           {/* Logo */}

@@ -1,5 +1,4 @@
-import Header from "../../components/layout/Header";
-import Navigation from "../../components/layout/Navigation";
+import StickyHeaderNavigation from "../../components/layout/StickyHeaderNavigation";
 import Footer from "../../components/layout/Footer";
 
 import CartSummary from "../../components/common/CartSummary";
@@ -12,8 +11,7 @@ export default function ShopLayout({
 }) {
   return (
     <>
-      <Header />
-      <Navigation />
+      <StickyHeaderNavigation />
 
       <main className="min-h-screen">{children}</main>
 

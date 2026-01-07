@@ -3,7 +3,7 @@ import Container from "./Container";
 export default function Navigation() {
   return (
     <nav className="
-      sticky top-0 z-50
+      top-0 z-50
       bg-white/90 dark:bg-slate-900/80
       backdrop-blur-lg
       border-b border-gray-200/60 dark:border-slate-700
