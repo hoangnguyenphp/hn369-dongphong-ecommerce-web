@@ -1,5 +1,5 @@
 import ProductDetailClient from "./ProductDetailClient";
-import { getProductBySlug } from "../../../../lib/data/products";
+import { getProductBySlug } from "../../../../lib/mock/products";
 
 export default async function ProductDetailPage({
   params,

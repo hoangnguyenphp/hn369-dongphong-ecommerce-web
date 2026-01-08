@@ -27,10 +27,10 @@ export default function ProductDetailClient({ product }: Props) {
 
   return (
     <div className="grid gap-10 md:grid-cols-2">
-      {/* LEFT: Gallery */}
+      {/* LEFT: SKU-based Gallery */}
       <ProductGallery
-        productImages={product.images}
-        selectedSku={selectedSku}
+        images={selectedSku.images}
+        fallbackImage={product.thumbnail}
       />
 
       {/* RIGHT: Info + SKU + Cart */}

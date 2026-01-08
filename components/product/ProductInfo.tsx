@@ -1,6 +1,6 @@
 "use client";
 
-import { Product, SKU } from "../../lib/constants";
+import { Product, SKU } from "../../lib/models/product";
 import PriceDisplay from "./PriceDisplay";
 import StockStatus from "./StockStatus";
 

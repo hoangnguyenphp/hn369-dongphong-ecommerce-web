@@ -1,15 +1,18 @@
+export type SKUAttribute = {
+  color?: string;
+  storage?: string;
+  size?: string;
+};
+
 export type SKU = {
   skuId: string;
 
-  attributes: {
-    color?: string;
-    storage?: string;
-    size?: string;
-  };
+  attributes: SKUAttribute;
 
   price: number;
   stock: number;
-  image: string;           // ⭐ SKU IMAGE
+
+  images: string[];   // ✅ multiple images per SKU
 };
 
 export type Product = {
@@ -18,6 +21,6 @@ export type Product = {
   name: string;
   description: string;
 
-  images: string[];        // fallback / hero
+  thumbnail: string; // ✅ single product image (PLP, cart, SEO)
   skus: SKU[];
 };

@@ -77,7 +77,7 @@ export function WishlistProvider({ children }: { children: ReactNode }) {
           skuId: sku.skuId,
           attributes: sku.attributes,
           price: sku.price,
-          image: sku.image ?? product.images?.[0] ?? "",
+          image: sku.images?.[0] ?? product.thumbnail ?? "",
         },
       ];
     });

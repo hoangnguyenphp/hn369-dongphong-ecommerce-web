@@ -1,35 +1,51 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { SKU } from "../../lib/constants";
 
 type Props = {
-  productImages: string[];
-  selectedSku?: SKU;
+  images: string[];          // SKU images
+  fallbackImage: string;     // Product thumbnail
 };
 
 export default function ProductGallery({
-  productImages,
-  selectedSku,
+  images,
+  fallbackImage,
 }: Props) {
-  const mainImage = selectedSku?.image ?? productImages[0];
+  const galleryImages = images.length > 0 ? images : [fallbackImage];
+
+  const [activeImage, setActiveImage] = useState(galleryImages[0]);
+
+  // Reset active image when SKU changes
+  useEffect(() => {
+    setActiveImage(galleryImages[0]);
+  }, [images]);
 
   return (
     <div className="space-y-4">
-      <div className="relative aspect-square w-full overflow-hidden rounded-xl border">
+      {/* Main Image */}
+      <div className="relative aspect-square w-full overflow-hidden rounded-xl border border-border bg-surface">
         <Image
-          src={mainImage}
+          src={activeImage}
           alt="Product image"
           fill
+          priority
           className="object-cover"
         />
       </div>
 
-      <div className="flex gap-3">
-        {(selectedSku ? [selectedSku.image] : productImages).map((img) => (
-          <div
+      {/* Thumbnails */}
+      <div className="flex gap-3 overflow-x-auto">
+        {galleryImages.map((img) => (
+          <button
             key={img}
-            className="relative h-20 w-20 overflow-hidden rounded-lg border"
+            onClick={() => setActiveImage(img)}
+            className={`relative h-20 w-20 shrink-0 overflow-hidden rounded-lg border transition
+              ${
+                activeImage === img
+                  ? "border-primary ring-2 ring-primary/40"
+                  : "border-border hover:border-primary/50"
+              }`}
           >
             <Image
               src={img}
@@ -37,7 +53,7 @@ export default function ProductGallery({
               fill
               className="object-cover"
             />
-          </div>
+          </button>
         ))}
       </div>
     </div>

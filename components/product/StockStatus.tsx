@@ -1,4 +1,4 @@
-import { SKU } from "../../lib/constants";
+import { SKU } from "../../lib/models/product";
 
 type Props = {
   sku?: SKU;
