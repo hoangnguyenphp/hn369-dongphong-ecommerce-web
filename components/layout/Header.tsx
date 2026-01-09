@@ -2,6 +2,7 @@ import Container from "./Container";
 import SearchBar from "../common/SearchBar";
 import ThemeToggle from "../common/ThemeToggle";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
   return (
@@ -9,13 +10,32 @@ export default function Header() {
       <Container>
         <div className="grid grid-cols-12 items-center gap-4 py-4">
           {/* Logo */}
-          <div className="col-span-6 md:col-span-2 font-bold text-xl">
-            <Link
-              href="/"
-              className="text-red-600 hover:opacity-80 transition-opacity"
-            >
-              Đông Phong
-            </Link>
+          <div className="col-span-6 md:col-span-2">
+          <Link href="/" className="flex items-center gap-2">
+            {/* Light mode logo */}
+            <Image
+              src="https://res.cloudinary.com/ddnshr4rk/image/upload/v1767952344/a_logo_for_hn369_ecommerce_in_red_color_with_the_idea_of_exploring_the_universe_light_ni0l2p.png"
+              alt="HN369 Logo"
+              width={56}
+              height={56}
+              className="block dark:hidden rounded-md"
+              priority
+            />
+
+            {/* Dark mode logo */}
+            <Image
+              src="https://res.cloudinary.com/ddnshr4rk/image/upload/v1767952344/a_logo_for_hn369_ecommerce_in_red_color_with_the_idea_of_exploring_the_universe_dark_rvyypp.png"
+              alt="HN369 Logo Dark"
+              width={56}
+              height={56}
+              className="hidden dark:block rounded-md"
+              priority
+            />
+
+            <span className="hidden md:inline font-bold text-xl text-accent">
+              HN369
+            </span>
+          </Link>
           </div>
 
           {/* Search */}
