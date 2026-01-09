@@ -24,7 +24,7 @@ export default function Header() {
 
             {/* Dark mode logo */}
             <Image
-              src="https://res.cloudinary.com/ddnshr4rk/image/upload/v1767952344/a_logo_for_hn369_ecommerce_in_red_color_with_the_idea_of_exploring_the_universe_dark_rvyypp.png"
+              src="https://res.cloudinary.com/ddnshr4rk/image/upload/v1767959469/a_logo_for_hn369_ecommerce_in_red_color_with_the_idea_of_exploring_the_universe_dark_nl5lq4.png"
               alt="HN369 Logo Dark"
               width={56}
               height={56}
