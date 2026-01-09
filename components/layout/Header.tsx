@@ -12,9 +12,9 @@ export default function Header() {
           <div className="col-span-6 md:col-span-2 font-bold text-xl">
             <Link
               href="/"
-              className="text-accent hover:opacity-80 transition-opacity"
+              className="text-red-500 hover:opacity-80 transition-opacity"
             >
-              ShopLogo
+              Đông Phong
             </Link>
           </div>
 

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Product, SKU } from "../../lib/models/product";
 import { useCart } from "../../hooks/useCart";
 import { useWishlist } from "../../hooks/useWishlist";
+import { formatPrice } from "../../utils/formatPrice"
 
 type ProductCardProps = {
   product: Product;
@@ -33,7 +34,7 @@ export default function ProductCard({ product, sku }: ProductCardProps) {
 
       {/* Price */}
       <p className="mt-1 font-bold text-primary">
-        ${sku.price.toLocaleString()}
+        ${formatPrice(sku.price)}
       </p>
 
       {/* Actions */}
