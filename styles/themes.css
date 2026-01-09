@@ -10,7 +10,7 @@
   --color-primary: 79 70 229;     /* indigo-600 */
   --color-primary-hover: 67 56 202;
 
-  --color-accent: 239 68 68;     /* red-500 */
+  --color-accent: 220 38 38;     /* red-600 */
 }
 
 /* Dark Theme */
@@ -25,5 +25,5 @@
   --color-primary: 99 102 241;    /* indigo-500 */
   --color-primary-hover: 129 140 248;
 
-  --color-accent: 239 68 68;     /* red-500 */
+  --color-accent: 220 38 38;     /* red-600 */
 }

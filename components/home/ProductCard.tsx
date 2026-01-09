@@ -33,7 +33,7 @@ export default function ProductCard({ product, sku }: ProductCardProps) {
       </Link>
 
       {/* Price */}
-      <p className="mt-1 font-bold text-primary">
+      <p className="mt-1 font-bold text-accent">
         ${formatPrice(sku.price)}
       </p>
 

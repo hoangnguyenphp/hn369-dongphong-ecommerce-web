@@ -12,14 +12,14 @@ export default function HeroBanner() {
           Best deals on top products — curated for you
         </p>
 
-        <div className="mt-8 flex justify-center gap-4">
+        {/* <div className="mt-8 flex justify-center gap-4">
           <button className="bg-white text-indigo-700 font-semibold px-6 py-3 rounded-xl shadow-lg hover:scale-105 transition">
             Shop Now
           </button>
           <button className="border border-white/40 px-6 py-3 rounded-xl hover:bg-white/10 transition">
             View Deals
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );
