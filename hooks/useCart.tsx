@@ -9,6 +9,7 @@ import {
 } from "react";
 import { Product, SKU } from "../lib/models/product";
 import { CartItem } from "../lib/models/cart";
+import { useToast } from "../components/common/ToastProvider";
 
 type CartContextType = {
   items: CartItem[];
@@ -23,7 +24,9 @@ type CartContextType = {
 const CartContext = createContext<CartContextType | null>(null);
 const STORAGE_KEY = "ecommerce_cart";
 
+
 export function CartProvider({ children }: { children: ReactNode }) {
+  const { notify } = useToast();
   /* ✅ LAZY INIT FROM localStorage */
   const [items, setItems] = useState<CartItem[]>(() => {
     if (typeof window === "undefined") return [];
@@ -45,35 +48,38 @@ export function CartProvider({ children }: { children: ReactNode }) {
   /* ----------------------------
    * Actions
    * ---------------------------- */
-  const addToCart = (product: Product, sku: SKU) => {
-    setItems((prev) => {
-      const existing = prev.find((i) => i.skuId === sku.skuId);
+const addToCart = (product: Product, sku: SKU) => {
+  setItems((prev) => {
+    const existing = prev.find((i) => i.skuId === sku.skuId);
 
-      if (existing) {
-        return prev.map((i) =>
-          i.skuId === sku.skuId
-            ? { ...i, quantity: i.quantity + 1 }
-            : i
-        );
-      }
+    if (existing) {
+      notify("🛒 Increased cart quantity");
+      return prev.map((i) =>
+        i.skuId === sku.skuId
+          ? { ...i, quantity: i.quantity + 1 }
+          : i
+      );
+    }
 
-      return [
-        ...prev,
-        {
-          productId: product.id,
-          slug: product.slug,
-          name: product.name,
-          skuId: sku.skuId,
-          attributes: sku.attributes,
-          price: sku.price,
-          quantity: 1,
-          image: sku.images?.[0] ?? product.thumbnail ?? "",
-        },
-      ];
-    });
+    notify("✅ Added to cart");
+    return [
+      ...prev,
+      {
+        productId: product.id,
+        slug: product.slug,
+        name: product.name,
+        skuId: sku.skuId,
+        attributes: sku.attributes,
+        price: sku.price,
+        quantity: 1,
+        image: sku.images?.[0] ?? product.thumbnail ?? "",
+      },
+    ];
+  });
 
-    setIsOpen(true);
-  };
+  // setIsOpen(true);
+};
+
 
   const removeFromCart = (skuId: string) => {
     setItems((prev) => prev.filter((i) => i.skuId !== skuId));

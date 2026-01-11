@@ -3,6 +3,7 @@
 import "./globals.css";
 import { CartProvider } from "../hooks/useCart";
 import { WishlistProvider } from "../hooks/useWishlist";
+import { ToastProvider } from "../components/common/ToastProvider";
 
 export default function RootLayout({
   children,
@@ -12,9 +13,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-bg text-text">
-        <CartProvider>
-          <WishlistProvider>{children}</WishlistProvider>
-        </CartProvider>
+        <ToastProvider>
+          <CartProvider>
+            <WishlistProvider>{children}</WishlistProvider>
+          </CartProvider>
+        </ToastProvider>
       </body>
     </html>
   );

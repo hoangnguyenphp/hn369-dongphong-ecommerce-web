@@ -9,6 +9,8 @@ import {
 } from "react";
 import { Product, SKU } from "../lib/models/product";
 import { WishlistItem } from "../lib/models/wishlist";
+import { useToast } from "../components/common/ToastProvider";
+
 
 /* =======================
    CONTEXT TYPE
@@ -32,10 +34,12 @@ const WishlistContext = createContext<WishlistContextType | undefined>(
   undefined
 );
 
+
 /* =======================
    PROVIDER
 ======================= */
 export function WishlistProvider({ children }: { children: ReactNode }) {
+  const { notify } = useToast();
   const [wishlistItems, setWishlistItems] = useState<WishlistItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [isHydrated, setIsHydrated] = useState(false);
@@ -65,7 +69,12 @@ export function WishlistProvider({ children }: { children: ReactNode }) {
   const addToWishlist = (product: Product, sku: SKU) => {
     setWishlistItems((prev) => {
       const exists = prev.some((i) => i.skuId === sku.skuId);
-      if (exists) return prev;
+      if (exists) {
+        notify("❤️ Already in wishlist");
+        return prev;
+      }
+
+      notify("💖 Added to wishlist");
 
       return [
         ...prev,

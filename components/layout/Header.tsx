@@ -21,18 +21,18 @@ export default function Header() {
           <div className="col-span-6 md:col-span-2">
             <Link href="/" className="flex items-center gap-2">
               <Image
-                src="https://res.cloudinary.com/ddnshr4rk/image/upload/v1767952344/a_logo_for_hn369_ecommerce_in_red_color_with_the_idea_of_exploring_the_universe_light_ni0l2p.png"
+                src="https://res.cloudinary.com/ddnshr4rk/image/upload/v1768147038/infinity_universe_log_lighter_aspang.jpg"
                 alt="HN369 Logo"
-                width={56}
-                height={56}
+                width={72}
+                height={72}
                 className="block dark:hidden rounded-md"
                 priority
               />
               <Image
-                src="https://res.cloudinary.com/ddnshr4rk/image/upload/v1767959469/a_logo_for_hn369_ecommerce_in_red_color_with_the_idea_of_exploring_the_universe_dark_nl5lq4.png"
+                src="https://res.cloudinary.com/ddnshr4rk/image/upload/v1768020250/infinity_universe_log_dark_b3gvug.jpg"
                 alt="HN369 Logo Dark"
-                width={56}
-                height={56}
+                width={72}
+                height={72}
                 className="hidden dark:block rounded-md"
                 priority
               />
