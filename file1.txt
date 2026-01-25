@@ -1,81 +1,87 @@
-ecommerce-web/
-├── app/
-│   ├── layout.tsx
-│   ├── page.tsx
+hn369-dongphong-ecommerce-web
+├── .gitignore
+├── app
+│   ├── (home)
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── (shop)
+│   │   ├── categories
+│   │   │   ├── page.tsx
+│   │   │   └── [...slug]
+│   │   │       └── page.tsx
+│   │   ├── layout.tsx
+│   │   └── products
+│   │       └── [slug]
+│   │           ├── loading.tsx
+│   │           ├── page.tsx
+│   │           └── ProductDetailClient.tsx
 │   ├── globals.css
-│   ├── metadata.ts
-│   │
-│   └── products/
-│       └── [slug]/
-│           ├── page.tsx                  # Server (SEO + data)
-│           ├── loading.tsx
-│           ├── not-found.tsx
-│           └── ProductDetailClient.tsx   # Client (SKU, cart)
-│
-├── components/
-│   ├── layout/
-│   │   ├── Header.tsx
-│   │   ├── Navigation.tsx
-│   │   ├── Footer.tsx
-│   │   └── Container.tsx
-│   │
-│   ├── home/
-│   │   ├── HeroBanner.tsx
+│   ├── layout.tsx
+│   └── metadata.ts
+├── components
+│   ├── common
+│   │   ├── AdsBanner.tsx
+│   │   ├── CartSummary.tsx
+│   │   ├── SearchBar.tsx
+│   │   ├── ThemeToggle.tsx
+│   │   ├── ToastProvider.tsx
+│   │   └── WishlistSummary.tsx
+│   ├── home
 │   │   ├── FeaturedCategories.tsx
 │   │   ├── FeaturedProducts.tsx
-│   │   └── ProductCard.tsx               # Link → product detail
-│   │
-│   ├── product/
-│   │   ├── ProductGallery.tsx            # SKU-based image
-│   │   ├── ProductInfo.tsx               # Name, desc
-│   │   ├── SkuSelector.tsx               # ⭐ CORE
-│   │   ├── PriceDisplay.tsx
-│   │   └── AddToCartSection.tsx
-│   │
-│   ├── cart/
-│   │   ├── CartSummary.tsx
-│   │   └── CartItem.tsx
-│   │
-│   ├── wishlist/
-│   │   ├── WishlistSummary.tsx
-│   │   └── WishlistItem.tsx
-│   │
-│   └── common/
-│       ├── Button.tsx
-│       ├── IconButton.tsx
-│       ├── SearchBar.tsx
-│       ├── ThemeToggle.tsx
-│       └── AdsBanner.tsx
-│
-├── hooks/
-│   ├── useCart.ts                        # SKU-aware
-│   ├── useWishlist.ts                   # SKU-aware
-│   ├── useTheme.ts
-│   └── useLocalStorage.ts
-│
-├── lib/
-│   ├── models/
-│   │   ├── product.ts                   # Product & SKU
-│   │   ├── cart.ts                      # CartItem
-│   │   └── wishlist.ts
-│   │
-│   ├── data/
-│   │   └── products.ts                  # Mock / API
-│   │
-│   ├── seo.ts
-│   ├── ads.ts
-│   └── constants.ts
-│
-├── styles/
-│   └── themes.css
-│
-├── public/
-│   └── images/
-│
+│   │   ├── HeroBanner.tsx
+│   │   └── ProductCard.tsx
+│   ├── layout
+│   │   ├── Container.tsx
+│   │   ├── Footer.tsx
+│   │   ├── Header.tsx
+│   │   ├── Navigation.tsx
+│   │   └── StickyHeaderNavigation.tsx
+│   └── product
+│       ├── AddToCartSection.tsx
+│       ├── PriceDisplay.tsx
+│       ├── ProductGallery.tsx
+│       ├── ProductInfo.tsx
+│       ├── SkuSelector.tsx
+│       └── StockStatus.tsx
 ├── Dockerfile
-├── tailwind.config.ts
+├── domain
+│   └── category
+│       └── category.ts
+├── file.txt
+├── file1.txt
+├── file2.txt
+├── git
+├── hooks
+│   ├── useCart.tsx
+│   ├── useTheme.ts
+│   └── useWishlist.tsx
+├── lib
+│   ├── ads.ts
+│   ├── constants.ts
+│   ├── data
+│   ├── mock
+│   │   ├── categories.ts
+│   │   └── products.ts
+│   ├── models
+│   │   ├── cart.ts
+│   │   ├── category.ts
+│   │   ├── product.ts
+│   │   └── wishlist.ts
+│   ├── routes.ts
+│   └── seo.ts
+├── next-env.d.ts
 ├── next.config.js
+├── package-lock.json
 ├── package.json
-└── .github/
-    └── workflows/
-        └── ci.yml
+├── postcss.config.js
+├── promts
+├── public
+│   └── images
+│       └── .gitkeep
+├── styles
+│   └── themes.css
+├── tailwind.config.ts
+├── tsconfig.json
+└── utils
+    └── formatPrice.ts

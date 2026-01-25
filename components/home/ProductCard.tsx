@@ -5,7 +5,8 @@ import Image from "next/image";
 import { Product, SKU } from "../../lib/models/product";
 import { useCart } from "../../hooks/useCart";
 import { useWishlist } from "../../hooks/useWishlist";
-import { formatPrice } from "../../utils/formatPrice"
+import { formatPrice } from "../../utils/formatPrice";
+import { routes } from "../../lib/routes"
 
 type ProductCardProps = {
   product: Product;
@@ -19,7 +20,7 @@ export default function ProductCard({ product, sku }: ProductCardProps) {
   return (
     <div className="rounded-xl border border-border bg-surface p-4 transition hover:-translate-y-1 hover:shadow-lg">
       {/* Image + Name */}
-      <Link href={`/products/${product.slug}`} className="block">
+      <Link href={routes.product(product.slug)} className="block">
         <div className="relative mb-3 aspect-square overflow-hidden rounded-lg bg-gray-100">
           <Image
             src={product.thumbnail}

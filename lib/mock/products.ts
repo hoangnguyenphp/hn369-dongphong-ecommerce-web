@@ -37,6 +37,7 @@ export const products: Product[] = [
         ],
       },
     ],
+    categorySlugs: ["iphone"],
   },
 
   {
@@ -73,6 +74,7 @@ export const products: Product[] = [
         ],
       },
     ],
+    categorySlugs: ["phones", "iphone"],
   },
 ];
 

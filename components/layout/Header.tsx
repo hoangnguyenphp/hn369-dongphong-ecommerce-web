@@ -8,6 +8,7 @@ import Image from "next/image";
 
 import { useCart } from "../../hooks/useCart";
 import { useWishlist } from "../../hooks/useWishlist";
+import {routes} from "../../lib/routes"
 
 export default function Header() {
   const { toggleOpen: toggleCart } = useCart();
@@ -19,7 +20,7 @@ export default function Header() {
         <div className="grid grid-cols-12 items-center gap-4 py-4">
           {/* Logo */}
           <div className="col-span-6 md:col-span-2">
-            <Link href="/" className="flex items-center gap-2">
+            <Link href={routes.home()} className="flex items-center gap-2">
               <Image
                 src="https://res.cloudinary.com/ddnshr4rk/image/upload/v1768147038/infinity_universe_log_lighter_aspang.jpg"
                 alt="HN369 Logo"

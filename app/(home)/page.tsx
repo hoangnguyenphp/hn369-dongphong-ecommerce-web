@@ -4,7 +4,7 @@ import FeaturedProducts from "../../components/home/FeaturedProducts";
 export default function HomePage() {
   return (
     <>
-      <FeaturedCategories />
+      {/*<FeaturedCategories />*/}
       <FeaturedProducts />
     </>
   );
