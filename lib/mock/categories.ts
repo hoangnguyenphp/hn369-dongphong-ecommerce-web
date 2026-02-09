@@ -14,6 +14,9 @@ export const categories: Category[] = [
 
   { id: "c6", name: "Gaming Laptops", slug: "gaming", parentSlug: "laptops" },
 
-  // ROOT
-  { id: "dong-phong-muoi-tay-ninh", name: "Đông Phong", slug: "dong-phong-muoi-tay-ninh" },
+  // Đông Phong ROOT
+  { id: "dong-phong", name: "Đông Phong", slug: "dong-phong" },
+
+  // Đông Phong muối Tây Ninh (L1)
+  { id: "dong-phong-muoi-tay-ninh", name: "Đông Phong", slug: "dong-phong-muoi-tay-ninh", parentSlug: "dong-phong"},
 ];
