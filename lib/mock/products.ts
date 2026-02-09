@@ -110,7 +110,7 @@ export const products: Product[] = [
         ],
       },
     ],
-    categorySlugs: ["dong_phong_muoi_tay_ninh"],
+    categorySlugs: ["dong-phong-muoi-tay-ninh"],
   },  
 ];
 
