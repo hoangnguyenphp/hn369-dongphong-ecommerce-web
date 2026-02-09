@@ -13,4 +13,7 @@ export const categories: Category[] = [
   { id: "c5", name: "Samsung", slug: "samsung", parentSlug: "phones" },
 
   { id: "c6", name: "Gaming Laptops", slug: "gaming", parentSlug: "laptops" },
+
+  // ROOT
+  { id: "dong_phong_muoi_tay_ninh", name: "Đông Phong", slug: "dong_phong_muoi_tay_ninh" },
 ];

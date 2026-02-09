@@ -76,6 +76,42 @@ export const products: Product[] = [
     ],
     categorySlugs: ["phones", "iphone"],
   },
+  {
+    id: 3,
+    slug: "dong-phong-muoi-tom-tay-ninh",
+    name: "Muối Tôm Tây Ninh",
+    description: "Muối tôm Tây Ninh, thơm ngon đậm vị.",
+    thumbnail: "/images/iphone-17-pro/thumbnail.jpg",
+    skus: [
+      {
+        skuId: "ip17-pro-black-256",
+        attributes: {
+          color: "Black",
+          storage: "256GB",
+        },
+        price: 1199,
+        stock: 8,
+        images: [
+          "/images/iphone-17-pro/black/front.jpg",
+          "/images/iphone-17-pro/black/back.jpg",
+        ],
+      },
+      {
+        skuId: "ip17-pro-blue-512",
+        attributes: {
+          color: "Blue",
+          storage: "512GB",
+        },
+        price: 1399,
+        stock: 2,
+        images: [
+          "/images/iphone-17-pro/blue/front.jpg",
+          "/images/iphone-17-pro/blue/back.jpg",
+        ],
+      },
+    ],
+    categorySlugs: ["dong_phong_muoi_tay_ninh"],
+  },  
 ];
 
 export async function getProductBySlug(slug: string) {
