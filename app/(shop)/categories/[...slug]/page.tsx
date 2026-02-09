@@ -4,7 +4,9 @@ import {
   getProductsByCategory,
 } from "../../../../domain/category/category";
 
-import {routes} from "../../../../lib/routes"
+import {routes} from "../../../../lib/routes";
+
+import Link from "next/link";
 
 type Props = {
   params: { slug: string[] };
@@ -66,16 +68,53 @@ export default function CategoryPage({ params }: Props) {
   );
 }
 
-/* -------------------- */
 function ProductGrid({ products }: { products: any[] }) {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-      {products.map((p) => (
-        <div key={p.id} className="border rounded-lg p-3">
-          <div className="font-semibold">{p.name}</div>
-          <div className="text-sm text-muted">${p.price}</div>
-        </div>
-      ))}
+      {products.map((p) => {
+        const priceText = getPriceRange(p.skus);
+        const inStock = p.skus.some((s: any) => s.stock > 0);
+
+        return (
+          <Link
+            key={p.id}
+            href={routes.product(p.slug)}
+            className="group border rounded-xl overflow-hidden hover:shadow-lg transition"
+          >
+            {/* IMAGE */}
+            <div className="aspect-square bg-gray-100 flex items-center justify-center">
+              <img
+                src={p.thumbnail}
+                alt={p.name}
+                className="object-cover w-full h-full group-hover:scale-105 transition"
+              />
+            </div>
+
+            {/* INFO */}
+            <div className="p-3 space-y-1">
+              <div className="font-medium line-clamp-2">{p.name}</div>
+
+              <div className="text-sm font-semibold">{priceText}</div>
+
+              <div
+                className={`text-xs ${
+                  inStock ? "text-green-600" : "text-red-500"
+                }`}
+              >
+                {inStock ? "In stock" : "Out of stock"}
+              </div>
+            </div>
+          </Link>
+        );
+      })}
     </div>
   );
+}
+
+
+function getPriceRange(skus: any[]) {
+  const prices = skus.map((s) => s.price);
+  const min = Math.min(...prices);
+  const max = Math.max(...prices);
+  return min === max ? `$${min}` : `$${min} – $${max}`;
 }
