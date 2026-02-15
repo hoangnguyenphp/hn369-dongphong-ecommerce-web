@@ -55,12 +55,12 @@ export default function CategoryPage({ params }: Props) {
   /* -------------------------------------------------- */
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-10">
       {/* Breadcrumb */}
       <Breadcrumb items={breadcrumbItems} />
 
       {/* Title */}
-      <h1 className="text-3xl font-bold">{category.name}</h1>
+      <h1 className="text-3xl font-bold tracking-tight">{category.name}</h1>
 
       {/* CASE 1: HUB */}
       {hasSub && !hasProducts && (
