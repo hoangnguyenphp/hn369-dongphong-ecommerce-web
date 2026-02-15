@@ -6,7 +6,19 @@ export const products: Product[] = [
     slug: "iphone-15-pro",
     name: "iPhone 15 Pro",
     description: "Titanium design with a powerful Pro camera system.",
+
+    primaryCategoryPath: [
+      "electronics",
+      "phones",
+      "iphone"
+    ],
+
+    categorySlugs: [
+      "iphone"
+    ],
+
     thumbnail: "/images/iphone-15-pro/thumbnail.jpg",
+
     skus: [
       {
         skuId: "ip15-pro-black-128",
@@ -37,7 +49,6 @@ export const products: Product[] = [
         ],
       },
     ],
-    categorySlugs: ["iphone"],
   },
 
   {
@@ -45,7 +56,19 @@ export const products: Product[] = [
     slug: "iphone-17-pro",
     name: "iPhone 17 Pro",
     description: "Next-gen performance with an advanced Pro camera.",
+
+    primaryCategoryPath: [
+      "electronics",
+      "phones",
+      "iphone"
+    ],
+
+    categorySlugs: [
+      "iphone"
+    ],
+
     thumbnail: "/images/iphone-17-pro/thumbnail.jpg",
+
     skus: [
       {
         skuId: "ip17-pro-black-256",
@@ -74,44 +97,52 @@ export const products: Product[] = [
         ],
       },
     ],
-    categorySlugs: ["phones", "iphone"],
   },
+
   {
     id: 3,
     slug: "dong-phong-muoi-tom-tay-ninh",
     name: "Muối Tôm Tây Ninh",
     description: "Muối tôm Tây Ninh, thơm ngon đậm vị.",
-    thumbnail: "/images/iphone-17-pro/thumbnail.jpg",
+
+    primaryCategoryPath: [
+      "dong-phong",
+      "dong-phong-muoi-tay-ninh"
+    ],
+
+    categorySlugs: [
+      "dong-phong-muoi-tay-ninh"
+    ],
+
+    thumbnail: "/images/muoi-tom/thumbnail.jpg",
+
     skus: [
       {
-        skuId: "ip17-pro-black-256",
+        skuId: "muoi-tom-250g",
         attributes: {
-          color: "Black",
-          storage: "256GB",
+          size: "250g",
         },
-        price: 1199,
-        stock: 8,
+        price: 5,
+        stock: 50,
         images: [
-          "/images/iphone-17-pro/black/front.jpg",
-          "/images/iphone-17-pro/black/back.jpg",
+          "/images/muoi-tom/250g/front.jpg",
+          "/images/muoi-tom/250g/back.jpg",
         ],
       },
       {
-        skuId: "ip17-pro-blue-512",
+        skuId: "muoi-tom-500g",
         attributes: {
-          color: "Blue",
-          storage: "512GB",
+          size: "500g",
         },
-        price: 1399,
-        stock: 2,
+        price: 9,
+        stock: 30,
         images: [
-          "/images/iphone-17-pro/blue/front.jpg",
-          "/images/iphone-17-pro/blue/back.jpg",
+          "/images/muoi-tom/500g/front.jpg",
+          "/images/muoi-tom/500g/back.jpg",
         ],
       },
     ],
-    categorySlugs: ["dong-phong-muoi-tay-ninh"],
-  },  
+  },
 ];
 
 export async function getProductBySlug(slug: string) {

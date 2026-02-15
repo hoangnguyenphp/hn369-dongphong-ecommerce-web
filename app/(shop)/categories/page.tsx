@@ -1,12 +1,18 @@
 import Link from "next/link";
 import { getRootCategories } from "../../../domain/category/category";
 import {routes} from "../../../lib/routes"
+import Breadcrumb from "../../../components/common/Breadcrumb";
 
 export default function CategoriesPage() {
   const categories = getRootCategories();
+  const breadcrumbItems = [
+    { label: "Categories", href: routes.categories() },
+  ];
 
   return (
     <div className="space-y-6">
+     {/* Breadcrumb */}
+      <Breadcrumb items={breadcrumbItems} />      
       <h1 className="text-3xl font-bold">All Categories</h1>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

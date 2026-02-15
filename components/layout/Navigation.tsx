@@ -5,7 +5,6 @@ import { routes } from "../../lib/routes";
 const NAV_ITEMS = [
   { label: "Home", href: routes.home() },
   { label: "Categories", href: routes.categories() },
-  { label: "Deals", href: routes.home() },
 ];
 
 export default function Navigation() {
